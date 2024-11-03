@@ -1,0 +1,371 @@
+body{
+    width: 1366px;
+    font-family: "Roboto",sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    color: #163152;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-header{
+    width: 1366px;
+    height: 160px;
+    box-sizing: border-box;
+    padding: 30px 48px;
+    background-color: #E8FBFF;
+    margin-bottom: 51px;
+}
+.main-nav{
+    display: flex;
+}
+.main-nav-list{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 81px 0 60px
+}
+.button-nav{
+    margin: 25px 160px 25px 141px;
+    display: flex;
+    gap: 6px;
+    height: 50px;
+    width: 205px;
+    background-color: #5C2018;
+    border: 2px solid #163152;
+    border-radius: 30px;
+    cursor: pointer;
+    align-items: center;
+    padding: 0;
+    padding-left: 18px;
+}
+.button-nav p{
+    color: #ffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+.icon{
+    margin: 28px 0;
+    border: none;
+    border-bottom: none;
+    position: relative;
+    background-color: none;
+    background: none;
+}
+
+
+.container{
+
+}
+
+.hero {
+    background-image: url("images/Vector33.png");
+    width: 1270px;
+    height: 450px;
+    margin-left: 48px;
+    gap: 0px;
+    position: relative; /* или absolute, если нужно */
+    background-size: cover; /* или contain, если нужно */
+    background-position: center; /* если нужно */
+    opacity: 1; /* чтобы элемент был видимым */
+}
+
+.container h1{
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.container h2{
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.hero h1 {
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56.25px;
+    text-align: left;
+
+}
+
+
+.hero h2 {
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 42.19px;
+    text-align: left;
+}
+
+.container p{
+    width: 822.36px;
+    height: 211px;
+
+    margin-top: 209px;
+    margin-left: 258px;
+}
+
+.hero p {
+    margin: 0 auto;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 23.44px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+.pagination {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 30px;
+
+}
+
+
+.dot {
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background-color: #ccc;
+
+    margin: 0 5px;
+
+}
+
+
+.dot.active {
+
+    background-color: #333;
+
+}
+
+
+.arrow {
+
+    position: absolute;
+
+    top: 50%;
+
+    right: 50px;
+
+    transform: translateY(-50%);
+
+}
+
+
+.arrow img {
+
+    width: 30px;
+
+    height: 30px;
+
+}
+
+
+
+
+
+
+
+
+
+/* попапы */
+
+
+
+
+
+
+.modal {
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    transition: opacity 200ms ease-in;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99998;
+}
+
+.modal.open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal:target {
+    opacity: 1;
+	pointer-events: auto;
+    overflow-y: auto;
+}
+
+.modal-dialog-enter {
+    position: relative;
+    max-width: 380px;
+    margin: 328px auto;
+}
+
+.modal-dialog-register {
+    position: relative;
+    max-width: 380px;
+    margin: 255px auto;
+}
+
+.modal-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background: rgba(232, 251, 255, 1);
+    border: 2px solid rgba(49, 115, 129, 1);
+    border-radius: 10px;
+    outline: 0;
+    z-index: 1;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 19px 0 19px;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: Roboto;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 39.84px;
+    text-align: center;
+}
+
+.modal-subtitle {
+    margin: 10px 0 0 0;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.41px;
+    text-align: center;
+    color: rgba(103, 103, 128, 1);
+    margin-bottom: 28px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    float: right;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
+}
+
+.close:focus, .close:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .75;
+}
+
+.modal-body {
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow: auto;
+}
+
+.btn-model {
+    background-color: #5C2018;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    box-shadow: 0px 4px 10px 0px rgba(233, 68, 75, 0.25);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+}
+
+.btn-google {
+    cursor: pointer;
+    padding: 12px 16px 12px 42px;
+    border: none;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    color: rgba(22, 49, 82, 1);
+    font-size: 14px;
+    font-weight: 500;    
+    background: rgba(232, 251, 255, 1);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-position: 57px;
+    background-size: 29px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px 23px 10px;
+    row-gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0.03em;
+}
+
+.modal-body .form-group {
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.form-control {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 16.41px;
+    letter-spacing: 0.03em;
+    padding: 13px 20px;
+    border-radius: 12px;
+    border: 1px 0px 0px 0px;
+    background: rgba(232, 251, 255, 1);
+    border: 1px solid rgba(0, 0, 0, 0.25)
+}
+
+.remember-me {
+    display: flex;
+    margin: 0 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+}
+
+.styled-checkbox {
+    margin: 0 5px 0 0;
+}
