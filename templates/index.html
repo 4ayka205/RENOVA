@@ -73,7 +73,7 @@
                                 Войти с помощью Google
                             </button>
                         </div>
-                        <p>Нет аккаунта? <a href="#openModal-register">Зарегистрируйся!</a></p>
+                        <p>Нет аккаунта? <a href="#" class="switch-popup">Зарегистрируйся!</a></p>
                     </form>
                 </div>
               </div>
@@ -86,7 +86,7 @@
                 <div class="modal-header">
                     <h3 class="modal-title">ДОБРО ПОЖАЛОВАТЬ!</h3>
                     <p class="modal-subtitle">Пожалуйста, укажите следующие данные для регистрации</p>
-                    
+                    <a href="#close" title="Close" class="close">×</a>
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
@@ -110,7 +110,7 @@
                                 Войти с помощью Google
                             </button>
                         </div>
-                        <p>Есть аккаунт? <a href="#openModal-enter">Войди!</a></p>
+                        <p>Есть аккаунт? <a href="#" class="switch-popup">Войди!</a></p>
                     </form>
                 </div>
                 </div>
@@ -118,11 +118,7 @@
         </div>
 
 
-
-
+        <script src="{% static 'js/main.js' %}" type="module"></script>
     </main>
-    <script src="{% static 'js/popap.js' %}"></script>
-
-
 </body>
 </html>

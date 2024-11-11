@@ -10,6 +10,9 @@ body{
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
 .main-header{
     width: 1366px;
     height: 160px;
@@ -26,6 +29,9 @@ body{
     gap: 40px;
     list-style: none;
     margin: 81px 0 60px
+}
+.main-nav-item a{
+    color: #163152;
 }
 .button-nav{
     margin: 25px 160px 25px 141px;
@@ -189,6 +195,7 @@ body{
 
 
 .modal {
+    display: none;
     position: fixed;
     margin: 0;
     padding: 0;
@@ -199,13 +206,14 @@ body{
     background: rgba(0,0,0,0.5);
     transition: opacity 200ms ease-in;
     pointer-events: none;
-    visibility: hidden;
+    /* visibility: hidden; */
     opacity: 0;
     z-index: 99998;
 }
 
 .modal.open {
-    visibility: visible;
+    display: block;
+    pointer-events:all;
     opacity: 1;
 }
 
@@ -246,6 +254,13 @@ body{
 
 .modal-body {
     text-align: center;
+}
+
+.modal-body a{
+    color: #5C2018;;
+}
+.modal-body p {
+    color: #676780;
 }
 
 .modal-title {
