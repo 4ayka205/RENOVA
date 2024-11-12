@@ -252,15 +252,41 @@ a {
     padding: 30px 19px 0 19px;
 }
 
-.modal-body {
+.modal-body form{
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    flex: 1 1 auto;
+    padding: 15px;
+    overflow: auto;
+    gap: 23px;
 }
 
-.modal-body a{
+.form-group a{
     color: #5C2018;;
 }
-.modal-body p {
+.form-group p {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 14px;
     color: #676780;
+    margin: 12px 0 5px 0
+}
+
+.btn-group {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+}
+
+.btn-group-enter {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
 }
 
 .modal-title {
@@ -281,7 +307,6 @@ a {
     line-height: 16.41px;
     text-align: center;
     color: rgba(103, 103, 128, 1);
-    margin-bottom: 28px;
 }
 
 .close {
@@ -304,12 +329,6 @@ a {
     text-decoration: none;
     cursor: pointer;
     opacity: .75;
-}
-
-.modal-body {
-    flex: 1 1 auto;
-    padding: 15px;
-    overflow: auto;
 }
 
 .btn-model {
@@ -343,20 +362,16 @@ a {
     background-size: 29px;
 }
 
-.form-group {
+.modal-body .form-group {
     display: flex;
     flex-direction: column;
-    margin: 0 10px 23px 10px;
-    row-gap: 6px;
+    margin: 0 10px 0 10px;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.03em;
-}
-
-.modal-body .form-group {
-    gap: 12px;
-    margin-bottom: 12px;
+    text-align: left;
+    row-gap: 6px;
 }
 
 .form-control {
@@ -374,7 +389,7 @@ a {
 
 .remember-me {
     display: flex;
-    margin: 0 10px;
+    margin: 0;
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;

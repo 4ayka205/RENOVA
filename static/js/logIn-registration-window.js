@@ -46,12 +46,12 @@ ClosePopup(RegistrationWindow);
 
 //Внизу пытался сделать переход в личный кабинет, не разобрался(
 
-// let logInBtn = LogInWindow.querySelector('.btn-model');
-// let RegistrationBtn = RegistrationWindow.querySelector('.btn-module');
+ let logInBtn = LogInWindow.querySelector('.btn-model');
+ let RegistrationBtn = RegistrationWindow.querySelector('.btn-module');
 
-// logInBtn.addEventListener('click', (e)=>{
-//     if (true){ //Вместо true должна быть проверка на валидность введённых данных
-//         window.open('lk/')
-//     }
+ logInBtn.addEventListener('click', (e)=>{
+     if (localStorage.getItem('authToken')){ //Вместо true должна быть проверка на валидность введённых данных
+         window.open('profile/')
+     }
 
-// });
+ });

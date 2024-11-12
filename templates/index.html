@@ -20,7 +20,11 @@
                 <li class="main-nav-item"><a href="#">Контакты</a></li>
             </ul>
             <button class="button-nav" type="button"><p>Пройти опрос</p><img src="{% static 'img/Vector_2.svg' %}" class="vector_2" height="28" width="28"></button>
+            {% if user.is_authenticated %}
+            <button class="icon"><a href="/profile" id="open_profile"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
+            {% else %}
             <button class="icon"><a href="#" id="open_pop_up"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
+            {% endif %}
         </nav>
     </header>
     <main>
@@ -40,42 +44,49 @@
             </div>
         </section>
 
-
-
-
         <div id="openModal-enter" class="modal">
             <div class="modal-dialog-enter">
-              <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">С ВОЗВРАЩЕНИЕМ!</h3>
-                    <p class="modal-subtitle">Пожалуйста, введите свои данные</p>
-                    <a href="#close" title="Close" class="close">×</a>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
-                    </div>    
-                    <div class="form-group">
-                        <label>Пароль</label>
-                        <input type="password" name="password" class="form-control" placeholder="**********" required>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title">С ВОЗВРАЩЕНИЕМ!</h3>
+                        <p class="modal-subtitle">Пожалуйста, введите свои данные</p>
+                        <a href="#close" title="Close" class="close">×</a>
                     </div>
-                    <div class="remember-me">
-                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1"/>
-                        <label for="styled-checkbox-1">Запомнить меня</label>
+                    <div class="modal-body">
+                        <form action="/login/" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input type="password" name="password" class="form-control" placeholder="**********" required>
+                            </div>
+<!--                            {% if messages %}-->
+<!--                            <ul class="messages">-->
+<!--                                {% for message in messages %}-->
+<!--                                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>-->
+<!--                                {% endfor %}-->
+<!--                            </ul>-->
+<!--                            {% endif %}-->
+                            <div class="form-group">
+                                <div class="btn-group-enter">
+                                    <div class="remember-me">
+                                    <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1"/>
+                                    <label for="styled-checkbox-1">Запомнить меня</label>
+                                </div>
+                                    <button type="submit" class="btn btn-model">
+                                        Войти
+                                    </button>
+                                    <button type="button" class="btn btn-google" >
+                                        Войти с помощью Google
+                                    </button>
+                                </div>
+                                <p>Нет аккаунта? <a href="#" class="switch-popup">Зарегистрируйся!</a></p>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="modal-body">    
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-model">
-                                Войти
-                            </button>
-                            <button type="button" class="btn btn-google" >
-                                Войти с помощью Google
-                            </button>
-                        </div>
-                        <p>Нет аккаунта? <a href="#" class="switch-popup">Зарегистрируйся!</a></p>
-                    </form>
-                </div>
               </div>
             </div>
         </div>
@@ -83,40 +94,42 @@
         <div id="openModal-register" class="modal">
             <div class="modal-dialog-register">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">ДОБРО ПОЖАЛОВАТЬ!</h3>
-                    <p class="modal-subtitle">Пожалуйста, укажите следующие данные для регистрации</p>
-                    <a href="#close" title="Close" class="close">×</a>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
-                    </div>    
-                    <div class="form-group">
-                        <label>Пароль</label>
-                        <input type="password" name="password" class="form-control" placeholder="**********" required>
+                    <div class="modal-header">
+                        <h3 class="modal-title">ДОБРО ПОЖАЛОВАТЬ!</h3>
+                        <p class="modal-subtitle">Пожалуйста, укажите следующие данные для регистрации</p>
+                        <a href="#close" title="Close" class="close">×</a>
                     </div>
-                    <div class="form-group">
-                        <label>Повторите пароль</label>
-                        <input type="password" name="password" class="form-control" placeholder="**********" required>
+                    <div class="modal-body">
+                        <form action="/register/" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input type="password" name="password" class="form-control" placeholder="**********" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Повторите пароль</label>
+                                <input type="password" name="password_confirm" class="form-control" placeholder="**********" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-model" id="btn_swap_popUp">
+                                        Зарегистрироваться
+                                    </button>
+                                    <button type="button" class="btn btn-google" >
+                                        Войти с помощью Google
+                                    </button>
+                                </div>
+                                <p>Есть аккаунт? <a href="#" class="switch-popup">Войди!</a></p>
+                            </div>
+                        </form>
                     </div>
-                </div>
-                <div class="modal-body">    
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-model" id="btn_swap_popUp">
-                                Зарегистрироваться
-                            </button>
-                            <button type="button" class="btn btn-google" >
-                                Войти с помощью Google
-                            </button>
-                        </div>
-                        <p>Есть аккаунт? <a href="#" class="switch-popup">Войди!</a></p>
-                    </form>
-                </div>
                 </div>
             </div>
         </div>
-
 
         <script src="{% static 'js/main.js' %}" type="module"></script>
     </main>

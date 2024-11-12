@@ -5,7 +5,9 @@
     <title>Личный кабинет</title>
 </head>
 <body>
-<h1>Добро пожаловать в личный кабинет, {{ user.username }}!</h1>
+<h1>Добро пожаловать в личный кабинет, {{ user.email }}!</h1>
+<a href="{% url 'home' %}">На главную</a>
+<br>
 <a href="{% url 'logout' %}">Выйти</a>
 </body>
 </html>
