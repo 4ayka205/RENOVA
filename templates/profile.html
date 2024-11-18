@@ -22,22 +22,13 @@
       <section class="program">
         <div class="program-title">
             <img src="{% static 'img/fire.svg' %}" width="25" height="30.66">
-            <h2>Тренировка - Сплит (продвинутый)</h2>
+            <h2>Тренировка - <span id="name"></span></h2>
         </div>
         <div class="program-description">
-            <div class="p">Общее: Программа нацеленная на набор мышечной массы, организована таким образом,
-                 чтобы каждая мышечная группа получала достаточно стимула для роста,
-                 с прогрессией нагрузок от недели к неделе. Программа рассчитана на 6 недель,
-                 с постепенным увеличением нагрузки. Основные дни распределены по принципу "грудь, спина, ноги".</div>
+            <div class="p">Общее: <span id="description"></span></div>
             <div class="weeks-wrapper">
                 <p>Недели:</p>
                 <ul class="weeks">
-                    <li class="week active">1</li>
-                    <li class="week">2</li>
-                    <li class="week">3</li>
-                    <li class="week">4</li>
-                    <li class="week">5</li>
-                    <li class="week">6</li>
                 </ul>   
             </div>
         </div>
@@ -48,42 +39,12 @@
             </div>
             <div class="training-content">
                <div class="days">
-                <div class="day current-day">
-                    <h4>Грудь</h4>
-                    <img src="{% static 'img/chest.png' %}" width="211" height="100">
-                    <div class="day-content">
-                        <div buttons-wrapper>
-                            <button class="skeep-btn">Пропустить <img src="{% static 'img/krest.svg' %}" width="10" height="10"></button>
-                            <button class="get-btn">Получить <img src="{% static 'img/tg.svg' %}" width="10" height="10"></button>
-                        </div>
-                        <button class="complete-btn">Завершить</button>
-                    </div>
-                </div>
-                <div class="day">
-                    <h4>Спина</h4>
-                    <img src="{% static 'img/back.png' %}" alt="Спина" width="211" height="100">
-                    <div class="day-content">
-                        <p>Тренировка не доступна, пока
-                            не завершена предыдущая, но
-                            вы можете просмотреть её план</p>
-                        <button class="check-btn">Просмотр</button>
-                    </div>
-                </div>
-                <div class="day">
-                    <h4>Ноги</h4>
-                    <img src="{% static 'img/legs.png' %}" alt="Ноги" width="211" height="100">
-                    <div class="day-content">
-                        <p>Тренировка не доступна, пока
-                            не завершена предыдущая, но
-                            вы можете просмотреть её план</p>
-                        <button class="check-btn">Просмотр</button>
-                    </div>
-                </div>
                 <div class="column">
                     <p class="note"><span>Примечание:</span> Вы можете выбрать любые дни недели, главное чтобы перерыв м/у тренировками составлял 1-2 дня.</p>
                     <button class="delete-program">Удалить программу</button>
                 </div>
             </div>
+            
         </div>
       </section>
         <section class="program-plan">
@@ -93,17 +54,17 @@
                 <div class="exercise warm-up">
                     <h3>Разминка(10-15 минут):</h3>
                     <ol class="warm-list">
-                        <li class="warm-element">Кардио: 5 минут на беговой дорожке или велотренажере (легкий темп), чтобы разогреть мышцы.</li>
+                        <!-- <li class="warm-element">Кардио: 5 минут на беговой дорожке или велотренажере (легкий темп), чтобы разогреть мышцы.</li>
                         <li class="warm-element">Разминка суставов: круговые движения плечами, локтями, запястьями и шеей (1-2 минуты).</li>
                         <li class="warm-element">Подготовительные подходы:
                             <ul class="warm-element-list">
                                 <li>Жим штанги (пустой гриф) – 2 подхода по 15 повторений.</li>
                                 <li>Разведения рук с гантелями – 1 подход по 12 повторений с легким весом.</li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ol>
                 </div>
-                <div class="exercise">
+                <!-- <div class="exercise">
                     <div class="exercise-content">
                         <p>1. Жим штанги на горизонтальной скамье</p>
                         <ul class="exercise-list">
@@ -130,18 +91,18 @@
                         </p>
                     </div>
                     <img src="{% static 'img/firstTraining/exc_2.png' %}" width="328" height="172">
-                </div>
+                </div> -->
                 <div class="exercise warm-down">
                     <h3>Заминка(При желании):</h3>
                     <ol class="warm-list">
-                        <li class="warm-element">Скручивания на коврике или тренажёре
+                        <!-- <li class="warm-element">Скручивания на коврике или тренажёре
                             <ul class="warm-element-list">
                                 <li>Подходы: 2</li>
                                 <li>Повторения: 10–20</li>
                             </ul>
                         </li>
                         <li>Кардио: 10-15 минут на дорожке или<br>
-                            велотренажере (комфортный темп)</li>
+                            велотренажере (комфортный темп)</li> -->
                     </ol>
                 </div>
             </div>
@@ -150,6 +111,44 @@
                 <a href="#top" class="top"><img src="{% static 'img/doubleArrow.svg' %}"></a>
             </div>
         </section>
+        <script src="{% static 'profile_js/main.js' %}" type="module"></script>
     </main>
+    <footer>
+
+    </footer>
+    <template id="exc">
+        <div class="exercise">
+            <div class="exercise-content">
+                <p>1. Жим штанги на горизонтальной скамье</p>
+                <ul class="exercise-list">
+                    <li>Подходы: </li>
+                    <li>Повторения: </li>
+                    <li>Оптимальный вес: <span class="weight">....</span></li>
+                </ul>
+                <a href="#" class="get-info">Подробнее</a>
+            </div>
+            <img src="{% static 'img/firstTraining/exc_1.png' %}" width="328" height="172">
+        </div>
+      </template>
+    <template id="day">
+        <div class="day">
+            <h4>Спина</h4>
+            <img class="day-img" src="{% static 'img/back.png' %}" alt="Спина" width="211" height="100">
+            <div class="day-content">
+                <p>Тренировка не доступна, пока
+                    не завершена предыдущая, но
+                    вы можете просмотреть её план</p>
+                <button class="check-btn">Просмотр</button>
+            </div>
+    </template>
+    <template id="day-content_">
+        <div class="day-content">
+            <div class='buttons-wrapper'>
+                <button class="skeep-btn">Пропустить <img src="{% static 'img/krest.svg' %}" width="10" height="10"></button>
+                <button class="get-btn">Получить <img src="{% static 'img/tg.svg' %}" width="10" height="10"></button>
+            </div>
+            <button class="complete-btn">Завершить</button>
+        </div>
+    </template>
 </body>
 </html>
