@@ -1,0 +1,332 @@
+h1, h2,h3, h4, p{
+  margin: 0;
+  padding: 0;
+}
+img{
+  display: block;
+  margin: 0;
+  padding: 0;
+} 
+
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;
+  margin: 0 auto;
+  padding: 0;
+  width: 1366px;
+}
+
+/* карточка тренировки */
+
+
+.lk-header {
+  background-color: #E8FBFF;
+  padding: 35px 48px 37px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  border-bottom: 2px #000 solid;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.icon-user {
+  margin-right: 18px;
+  padding-bottom: 6.19px;
+}
+.user-info h1{
+  padding-top: 4px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.back-link {
+  color: #5C2018;
+  text-decoration: none;
+  padding-bottom: 1px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.main-container {
+  margin: 50px auto;
+}
+.program{
+  padding: 17px 32px 31px 23px;
+  margin: 0 48px;
+  background-color: #163152;
+}
+
+.program-title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.program-title h2{
+  color: #fff;
+  font-size: 24px;
+  font-weight: 400;
+  padding-top: 3px;
+}
+.program-description{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 52px;
+}
+.program-description .p{
+  width: 700px;
+  margin-left: 15px;
+}
+.weeks-wrapper{
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.weeks-wrapper p {
+  font-size: 24px;
+  font-weight: 200;
+}
+
+
+.weeks{
+  margin: 0;
+  padding: 0; /* важно всегда уберать отступы у списков */
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 104px;
+  gap: 10px;
+  align-self: center;
+}
+.week{
+  width: 28px;
+  height: 28px;
+  background-color: #0C1B2D;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.weeks .active{
+  background-color: #F48273;
+  color: #fff;
+}
+.training-title{
+  display: flex;
+  gap: 10px;
+}
+.training-content{
+  margin: 26px 0 0 15px;
+}
+.days{
+  display: flex;
+  gap:50px;
+}
+.day{
+  background-color: rgba(207, 242, 250, 0.5);
+  border: 2px solid #F48273;
+  border-radius: 10px 30px 10px 30px;
+  width: 226px;
+  padding: 17px 8px 0 7px;
+  text-align: center;
+}
+.day img{
+  margin: 19px 0px 10px 0px;
+}
+.day h4{
+  color: #0C1B2D;
+  font-size: 24px;
+  font-weight: 500;
+}
+.day-content{
+  margin-bottom: 44px;
+  color: #0C1B2D;
+}
+.day-content p{
+  font-size: 14px;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+.check-btn{
+  background-color:#E8FBFF;
+  border: 2px solid black;
+  border-radius: 10px 0 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.current-day{
+  background-color: rgba(207, 242, 250, 1);
+}
+.current-day .day-content{
+  margin-top: 43px;
+}
+.buttons-wrapper{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+.skeep-btn, .get-btn{
+  display:inline-flex;
+  gap: 4px;
+  background-color: #E8FBFF;
+  border: 2px solid black;
+  border-radius: 10px 0 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  align-items: center;
+  padding: 0;
+  height: 24px;
+  width: 111px;
+  padding-left: 4px;
+}
+.skeep-btn img, .get-btn img{
+  margin: 0;
+}
+.get-btn{
+  width: 95px;
+}
+.complete-btn{
+  background-color:#0C1B2D;
+  border-radius: 10px 0 10px 0;
+  text-align: center;
+  font-weight: 500;
+  color: #E8FBFF;
+  width: 211px;
+  height: 30px;
+  margin-top: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+}
+.delete-program{
+  margin: 0;
+  margin-top: 180px;
+  margin-left:auto;
+  width: 120px;
+  height: 50px;
+  background-color: #903326;
+  border: 2px solid #E8FBFF;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #E8FBFF;
+  cursor: pointer;
+}
+.note{
+  display: block;
+  height: 95px;
+}
+
+/* Описание тренировки */
+
+.program-plan{
+  margin-top: 60px;
+  background-color: #163152;
+  padding: 23px 47px 0 46px;
+}
+.program-article{
+  display: block;
+  padding-bottom: 8px;
+  width: 415px;
+  color: #E8FBFF;
+  font-size: 36px;
+  font-weight: 500;
+  border-bottom: 2px solid #E8FBFF;
+  margin: 0 auto;
+  text-align: center;
+}
+.program-article-p{
+  display: block;
+  color: #E8FBFF;
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 8px;
+}
+.exercises{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 1273px;
+  margin: 43px auto 50px auto;
+}
+.exercise{
+  background-color: rgba(57, 98, 148, 0.5);
+  border: 10px solid #396294;
+  border-radius: 80px;
+  padding: 25px 22px 22px 50px;
+  display: flex;
+}
+.warm-up, .warm-down{
+  display: block;
+  background-color: #6C95C7;
+  border-color: #274A73;
+}
+.exercise p, .exercise ul, .exercise ol{
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0;
+}
+.exercise h3{
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.exercise img{
+  margin: 0 0 0 auto;
+}
+.exercise ul{
+  margin-bottom: 15px;
+}
+.get-info{
+  text-decoration: none;
+  color: #F48273;
+  font-size: 20px;
+  font-weight: 500;
+  display: inline-block;
+  border-bottom: 1px solid #F48273;
+}
+.exercise-description{
+  color:#F48273;
+  font-size: 16px;
+  line-height: 25px;
+}
+.edit{
+  display: inline-flex;
+  margin-bottom: 100px;
+  margin-left:540px;
+  gap: 400px;
+}
+.get-in-telegramm{
+  background-color:#E8FBFF;
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 285px;
+  color: #0C1B2D;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 10px 43px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.top{
+  margin-top: 70px;
+}
