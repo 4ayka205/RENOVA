@@ -311,6 +311,8 @@ body {
   display: inline-block;
 }
 .exercise-description{
+  display: inline-block;
+  width: 800px;
   color:#f5afa6;
   font-size: 16px;
   line-height: 25px;
