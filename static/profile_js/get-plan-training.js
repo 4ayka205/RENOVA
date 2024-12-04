@@ -28,6 +28,17 @@ function getPlanOfDay(dayData){
         excWrapp.querySelector('img').src = data.imgUrl;
         index++;
         excsWrapper.insertBefore(excWrapp, excsWrapper.querySelector('.warm-down'));
+
+        //Снизу получение описания упражнения.
+        const dataDescrtiption = dayData.plan[exc].details;
+        excWrapp.querySelector('.get-info').addEventListener('click', evt=>{
+            evt.preventDefault();
+            excWrapp.querySelector('.exercise-content').removeChild(evt.target);
+            const description = document.createElement('p');
+            description.classList.add('exercise-description');
+            description.textContent = dataDescrtiption;
+            excWrapp.querySelector('.exercise-content').appendChild(description);
+        })
     })
 }
 
