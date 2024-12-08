@@ -1,8 +1,11 @@
+import json
+
+import app
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .forms import CustomUserCreationForm, CustomAuthenticationForm
-from .models import CustomUser
+from .models import CustomUser, UserTraining
 
 
 def register_view(request):
@@ -11,17 +14,15 @@ def register_view(request):
         password = request.POST.get('password')
         password_confirm = request.POST.get('password_confirm')
 
-        if password != password_confirm:
-            messages.error(request, "Пароли не совпадают.")
-            return redirect('register')
-
         if CustomUser.objects.filter(email=email).exists():
-            messages.error(request, "Пользователь с таким email уже существует.")
-            return redirect('register')
+            return render(request, 'index.html',{'error': 'Пользователь с таким email уже существует.', 'error_type': 'register'})
+
+        if password != password_confirm:
+            return render(request, 'index.html', {'error': 'Пароли не совпадают.', 'error_type': 'register'})
 
         user = CustomUser.objects.create_user(email=email, password=password)
         user.save()
-        messages.success(request, "Вы успешно зарегистрированы!")
+        login(request, user)
         return redirect('lk')
 
     return render(request, 'index.html')
@@ -36,8 +37,7 @@ def login_view(request):
             login(request, user)
             return redirect('lk')
         else:
-            messages.error(request, "Неверный email или пароль.")
-            return redirect('home')
+            return render(request, 'index.html', {'error': 'Неверный email или пароль.', 'error_type': 'login'})
 
     return render(request, 'index.html')
 
@@ -54,3 +54,9 @@ def lk_view(request):
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+def json_receive(request):
+    objects = UserTraining.objects.all()
+    data = list(objects.values('json_data'))
+    return JsonResponse(data, safe=False)

@@ -37,6 +37,13 @@ body {
   align-items: center;
 }
 
+.user-link {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+
 .icon-user {
   margin-right: 18px;
   padding-bottom: 6.19px;
