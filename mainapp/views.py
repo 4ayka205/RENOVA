@@ -1,10 +1,7 @@
 import json
-
-import app
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.contrib import messages
 from .models import CustomUser, UserTraining
 
 
@@ -58,5 +55,5 @@ def logout_view(request):
 
 def json_receive(request):
     objects = UserTraining.objects.all()
-    data = list(objects.values('json_data'))
+    data = [{'id': item.id, 'json_data': item.json_data} for item in objects]
     return JsonResponse(data, safe=False)
