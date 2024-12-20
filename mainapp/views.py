@@ -1,6 +1,6 @@
 import json
 
-import app
+# import app
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout

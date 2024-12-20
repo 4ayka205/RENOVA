@@ -466,129 +466,218 @@ a {
 }
 
 /* Фильтры: */
-.trainings{
-    margin-top:70px
+.trainings {
+    margin-top: 70px;
+    text-align: center;
 }
-.trainings h2{
+
+.trainings h2 {
     color: #0C1B2D;
     display: block;
     width: 203px;
     font-size: 36px;
     font-weight: 700;
     border-bottom: 2px solid #0C1B2D;
-    margin: 0 auto 
-    
+    margin: 0 auto;
 }
 
-
-.filters {
-    margin: 38px 106px 0 106px;
+.filters-menu {
+    position: relative; /* Позволяет позиционировать вложенные элементы */
+    display: flex; /* Используем flexbox для выравнивания */
+    justify-content: center; /* Центрируем элементы по горизонтали */
+    margin-top: 20px; /* Отступ сверху для визуального разделения */
+    width: 100%;
 }
-  
-.filters__headers {
-    display: flex;
-    margin-bottom: 0;
-    padding: 13px 0px 14px 13px;
+
+.filters-header {
+    display: flex; /* Выстраивает фильтры в строку */
+    position: relative;
+    background-color:#CFF2FA; 
     border: 1px solid #0C1B2D;
-    border-radius: 20px;
-    background: #E8FBFF;
+    border-radius: 15px;
 }
 
-.filters__header{
-    cursor: pointer;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    padding: 0;
-    height: 23px;
-}
-
-.filters-img{
-    margin-right: 31px;
-}
-.f1{
-    margin-right: 100px;
-}
-.f2{
-    margin-right: 147px;
-}
-.f3{
-    margin-right: 50px;
-}
-.f4{
-    margin-right: 103px;
-}
-
-.filters__header p{
-    display: block;
-    font-size: 20px;
-    color: #0C1B2D;
-    font-weight: 500;
-}
-  
-
-.filters__content {
-    display: flex;
-    align-items: flex-start;   
-}
-
-.filters__group {
-    opacity: 0;
-    background: #ffffff;
-    border: 1px solid #000000;
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-    color:#000;
-    font-size: 15px;
-    padding: 10px 14px 13px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    box-sizing: border-box;
-}
-.filters__group label{
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+.filter {
+    position: relative; /* Позволяет позиционировать вложенные элементы */
+    margin: 0 10px; /* Отступ между фильтрами */
     
 }
-.filters__group input{
-    height: 20px;
-    width: 20px;
-    margin:0;
+
+.filter a {
+    justify-content: space-between;
+    text-decoration: none; /* Убирает подчеркивание */
+    padding: 10px; /* Добавляет отступы */
+    color: #000; /* Цвет текста */
+    display: block; /* Делает ссылку блочным элементом */
+    margin: 0 55px;
+    
 }
-.filters__group p{
-    margin: 0;
+/* добавление стрелок*/
+.filter > a:after {
+    content: "\25BC"; /* Символ стрелки вниз */
+    font-size: 12px; /* Размер стрелки */
+    position: absolute; /* Позволяет позиционировать псевдокласс */
+    right: 30px; /* Выравнивание по правому краю */
+    top: 50%; /* Позиционирование по вертикали */
+    transform: translateY(-50%); /* Выравнивание по вертикали */
+    transition: transform 0.2s ease; /* Плавный переход для стрелки */
+}
+
+.filter:hover > a:after {
+    transform: translateY(-50%) rotate(180deg); /* Переворачивает стрелку при наведении мыши */
+}
+/* добавление стрелок конец*/
+/* добавление checkbox*/
+.dropdown-item input[type="checkbox"] {
+    width: 20px; /* Устанавливает ширину checkbox */
+    height: 20px; /* Устанавливает высоту checkbox */
+    border: 1px solid #0C1B2D; /* Добавляет обводку checkbox */
+    margin-right: 5px; /* Добавляет отступ между checkbox и текстом */
+    vertical-align: middle; /* Выравнивает checkbox по вертикали */
+    box-sizing: border-box; /* Устанавливает размер checkbox, включая обводку */
+    transform: scale(1); /* Устанавливает размер checkbox */
+    font-size: 16px; /* Устанавливает размер checkbox */
+    line-height: 20px; /* Устанавливает размер checkbox */
+    min-width: 20px; /* Устанавливает минимальную ширину checkbox */
+    max-width: 20px; /* Устанавливает максимальную ширину checkbox */
+    min-height: 20px; /* Устанавливает минимальную высоту checkbox */
+    max-height: 20px; /* Устанавливает максимальную высоту checkbox */
+    display: inline-block; /* Устанавливает отображение checkbox */
+}
+/* добавление checkbox конец*/
+
+
+.dropdown {
+    visibility: hidden; /* Скрывает выпадающее меню по умолчанию */
+    opacity: 0; /* Устанавливает прозрачность на 0 */
+    position: absolute; /* Позволяет позиционировать выпадающее меню */
+    left: 0; /* Выравнивание по левому краю родителя */
+    top: 100%; /* Позиционирование под родителем */
+    background-color:#ffffff; /* Цвет фона выпадающего меню */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для выпадающего меню */
+    z-index: 1000; /* Устанавливает порядок наложения */
+    transition: visibility 0s, opacity 0.2s ease; /* Плавный переход для видимости и прозрачности */
+    width: 200px; /* Уменьшает ширину выпадающего элемента */
+    border-radius: 0 0 10px 10px; /* Добавляет обводку закругляющуюся снизу */
+    border: 1px solid #0C1B2D; /* Добавляет обводку выпадающему меню */
+    margin-right: 5px; /* Уменьшает отступ между checkbox и текстом */
+}
+
+.filter:hover .dropdown {
+    visibility: visible; /* Показывает выпадающее меню при наведении на родителя */
+    opacity: 1; /* Устанавливает прозрачность на 1 */
+}
+
+.dropdown-item {
+    padding: 10px; /* Уменьшает отступ между элементами выпадающего меню */
+    display: flex; /* Позволяет использовать flexbox для позиционирования элементов */
+    align-items: center; /* Выравнивает элементы по вертикали */
+}
+
+.dropdown-item a {
+    font-family: Roboto;
+    font-size: 15px;
     font-weight: 400;
-    text-align: center;
-}
-
-#level{
-    margin-right: 41px;
-    margin-left: 62px;
-    width: 208px;
-}
-#goal{
-    margin-right: 81px;
-    width: 211px;
-
-}
-#place{
-    margin-right: 38px;
-    width: 89px;
-}
-#gender{
-    margin-right: 82px;
-    width: 94px;
-}
-#special{
-    width: 169px;
-}
-.filters__group.active{
-    opacity: 1;
+    line-height: 17.58px;
+    text-align:left;
+    color: #000; /* Цвет текста для элементов выпадающего меню */
+    display: block; /* Делает ссылку блочным элементом */
+    margin-left: 0; 
 }
 
 
+/* Карточки тренировок */
+.trainings-section {
+    /* Добавляет отступы по 20 пикселей с каждой стороны */
+    padding: 20px;
+    /* Задает цвет фона секции */
+    background-color: #ffffff;
+    padding-top: 220px;
+}
 
+  /* Контейнер для карточек тренировок */
+.trainings-cards {
+    justify-content: center;
+
+}
+  
+  /* Карточка тренировки */
+.training-card {
+    /* Задает цвет фона карточки */
+    background: #163152;
+    /* Задает стиль границы карточки */
+    border: 3px solid #000000;
+    /* Задает радиус закругления углов карточки */
+    border-radius: 0px 30px 0px 30px;
+    /* Добавляет отступы по 20 пикселей с каждой стороны */
+    padding: 20px;
+    /* Задает ширину карточки */
+    width: 500px;
+    /* Задает высоту карточки */
+    height: 700px;
+    /* Размещает карточку как inline-block, чтобы она могла быть расположена рядом с другими карточками */
+
+    /* Добавляет отступы по 20 пикселей с каждой стороны */
+    margin: 15px;
+}
+  
+  /* Заголовок карточки тренировки */
+.training-card h3 {
+    font-family: Roboto;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 37.5px;
+    text-align: center;  
+    /* Задает стиль шрифта заголовка */
+    font-weight: bold;
+    /* Задает цвет текста заголовка */
+    color: #E8FBFF;
+    /* Добавляет отступ снизу */
+    margin-bottom: 30px;
+}
+  
+  /* Изображение карточки тренировки */
+.training-card img {
+    width: 430px;
+    height: 250px;
+    /* Задает способ масштабирования изображения */
+    object-fit: cover;
+    /* Добавляет отступ снизу */
+    margin-bottom: 10px;
+}
+  
+  /* Описание карточки тренировки */
+.training-card p {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    text-align: left;
+    color: #E8FBFF;
+    /* Добавляет отступ снизу */
+    margin-bottom: 20px;
+}
+  
+  /* Кнопка карточки тренировки */
+.training-card button {
+    border: 2px solid #1D1C1C;
+    background-color: #5C2018;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 220px;
+    height: 40px;
+    color: #ffffff;
+    cursor: pointer;
+}
+  
+  /* Стиль кнопки при наведении */
+.training-card button:hover {
+    /* Задает цвет фона кнопки при наведении */
+    background: #259c2f;
+}
+
+.image-container {
+    justify-content: center;  
+    margin-bottom: 20px;  
+}
