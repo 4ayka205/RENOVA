@@ -142,51 +142,129 @@
         </section>
         <section class="trainings">
             <h2>Тренировки</h2>
-            <div class="filters">
-                <!-- Общий блок с заголовками фильтров -->
-                <div class="filters__headers">
-                    <img class="filters-img" src="{% static 'img/filter.svg' %}" width="25" height="25">
-                    <a class="filters__header f1" data-target="level"><p>Уровень подготовки</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f2" data-target="goal" id="2"><p>Цель</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f3" data-target="place"><p>Место</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f4" data-target="gender"><p>Пол</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f5" data-target="special"><p>Специальное</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                </div>
-
-                <!-- Блоки с фильтрами, скрытые по умолчанию -->
-                <div class="filters__content">
-                    <div class="filters__group" id="level">
-                        <label><input type="checkbox" name="level" value="novice"> <p>Новичок</p></label>
-                        <label><input type="checkbox" name="level" value="advanced"> <p>Продвинутый</p></label>
-                        <label><input type="checkbox" name="level" value="master"> <p>Мастер в своём деле</p></label>
+            <div class="filters-menu">
+                <div class="filters-header">
+                    <div class="filter">
+                        <a>Уровень подготовки</a>
+                        <div class="dropdown">
+                            <div data-f="novice" class="dropdown-item">
+                                <input type="checkbox" id="novice" onchange="filterCards()"><a>Новичок</a>
+                            </div>
+                            <div data-f="intermediate" class="dropdown-item">
+                                <input type="checkbox" id="intermediate" onchange="filterCards()"><a>Продвинутый</a>
+                            </div>
+                            <div data-f="advanced" class="dropdown-item">
+                                <input type="checkbox" id="advanced" onchange="filterCards()"><a>Мастер в своём деле</a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="filters__group" id="goal">
-                        <label><input type="checkbox" name="goal" value="slim"> <p>Похудение</p></label>
-                        <label><input type="checkbox" name="goal" value="mass"> <p>Набор массы</p></label>
-                        <label><input type="checkbox" name="goal" value="maintain"> <p>Поддержание формы</p></label>
+                    <div class="filter">
+                        <a>Цель</a>
+                        <div class="dropdown">
+                            <div data-f="slim" class="dropdown-item">
+                                <input type="checkbox" id="goal-slim" onchange="filterCards()"><a>Похудение</a>
+                            </div>
+                            <div data-f="mass" class="dropdown-item">
+                                <input type="checkbox" id="goal-mass" onchange="filterCards()"><a>Набор массы</a>
+                            </div>
+                            <div data-f="maintain" class="dropdown-item">
+                                <input type="checkbox" id="goal-maintain" onchange="filterCards()"><a>Поддержание формы</a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="filters__group" id="place">
-                        <label><input type="checkbox" name="place" value="gym"> <p>Зал</p></label>
-                        <label><input type="checkbox" name="place" value="home"> <p>Дом</p></label>
+                    <div class="filter">
+                        <a>Место</a>
+                        <div class="dropdown">
+                            <div data-f="gym" class="dropdown-item">
+                                <input type="checkbox" id="place-gym" onchange="filterCards()"><a>Зал</a>
+                            </div>
+                            <div data-f="home" class="dropdown-item">
+                                <input type="checkbox" id="place-home" onchange="filterCards()"><a>Дом</a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="filters__group" id="gender">
-                        <label><input type="checkbox" name="gender" value="male"> <p>Муж.</p></label>
-                        <label><input type="checkbox" name="gender" value="female"> <p>Жен.</p></label>
+                    <div class="filter">
+                        <a>Пол</a>
+                        <div class="dropdown">
+                            <div data-f="male" class="dropdown-item">
+                                <input type="checkbox" id="gender-male" onchange="filterCards()"><a>Муж.</a>
+                            </div>
+                            <div data-f="female" class="dropdown-item">
+                                <input type="checkbox" id="gender-female" onchange="filterCards()"><a>Жен.</a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="filters__group" id="special">
-                        <label>
-                            <input type="checkbox" name="special" value="equipment">
-                            <p>Со спортивным инвентарём (для дома)</p>
-                        </label>
+                    <div class="filter">
+                        <a>Специальное</a>
+                        <div class="dropdown">
+                            <div data-f="equipment" class="dropdown-item">
+                                <input type="checkbox" id="special-equipment" onchange="filterCards()"><a>Со спортивным инвентарём (для дома)</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <section class="trainings-section">
+            <div class="trainings-cards">
+                <div id="cards-container">
+                    <div id="cards-container">
+                        <div class="training-card card" data-level="novice" data-goal="slim" data-place="gym" data-gender="male" data-special="equipment">
+                            <h3>Тренировка для новичков (похудение, зал, муж.)</h3>
+                            <img src="{% static 'img/Beginner_Slim.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка предназначена для новичков, которые хотят похудеть. Она включает в себя базовые упражнения и растяжку.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="intermediate" data-goal="mass" data-place="home" data-gender="female" data-special="">
+                            <h3>Тренировка для продвинутых (набор массы, дом, жен.)</h3>
+                            <img src="{% static 'img/Intermediate_Mass.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка подходит для тех, кто уже имеет некоторый опыт и хочет набрать мышечную массу, выполняя упражнения с собственным весом.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="advanced" data-goal="maintain" data-place="gym" data-gender="male" data-special="equipment">
+                            <h3>Тренировка для мастеров (поддержание формы, зал, муж.)</h3>
+                            <img src="{% static 'img/Split.svg' %}" alt="Тренировка">
+                            <p>Эта продвинутая тренировка включает в себя сплит-систему, которая помогает поддерживать форму и развивать силу.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="novice" data-goal="maintain" data-place="home" data-gender="female" data-special="">
+                            <h3>Тренировка для новичков (поддержание формы, дом, жен.)</h3>
+                            <img src="{% static 'img/Beginner_Maintain.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка подходит для новичков, которые хотят поддерживать свою физическую форму с помощью простых упражнений.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="intermediate" data-goal="slim" data-place="gym" data-gender="male" data-special="equipment">
+                            <h3>Тренировка для продвинутых (похудение, зал, муж.)</h3>
+                            <img src="{% static 'img/Intermediate_Slim.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка предназначена для тех, кто хочет похудеть, сочетая кардио и силовые упражнения.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="advanced" data-goal="mass" data-place="home" data-gender="female" data-special="">
+                            <h3>Тренировка для мастеров (набор массы, дом, жен.)</h3>
+                            <img src="{% static 'img/Advanced_Mass.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка предназначена для опытных атлетов, которые хотят увеличить мышечную массу с помощью сложных упражнений.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="novice" data-goal="slim" data-place="gym" data-gender="female" data-special="equipment">
+                            <h3>Тренировка для новичков (похудение, зал, жен.)</h3>
+                            <img src="{% static 'img/Beginner_Slim.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка включает в себя простые упражнения для похудения, идеально подходит для начинающих.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                        <div class="training-card card" data-level="intermediate" data-goal="maintain" data-place="home" data-gender="male" data-special="">
+                            <h3>Тренировка для продвинутых (поддержание формы, дом, муж.)</h3>
+                            <img src="{% static 'img/Intermediate_Maintain.svg' %}" alt="Тренировка">
+                            <p>Эта тренировка предназначена для мужчин с некоторым опытом, которые хотят поддерживать свою физическую форму, выполняя упражнения в домашних условиях.</p>
+                            <button class="choose-button">Выбрать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="{% static 'home_js/tranings-filter.js' %}"></script>
     </main>
+    <script src="{% static 'home_js/filter.js' %}"></script>
     <script src="{% static 'home_js/main.js' %}" type="module"></script>
 </body>
 </html>
