@@ -1,17 +1,14 @@
-import { userTraining } from "./data.js";
 import {makeCurrDay} from "./util.js"
+import {userTraining} from "./api.js";
 
 const dayTemplate = document.querySelector('#day').content.querySelector('div');
 
 function getTrainingGeneral(){ //Получение и отображение титульного листа тренировки. Всё берётся из userTraining, а не из начальной вёрстки(Кроме примечания)
     const name = document.querySelector('#name');
     name.textContent = userTraining.name;
-
     const description = document.querySelector('#description');
     description.textContent = userTraining.description;
-
     getWeeksListElem();
-
     getDaysCards();
 }
 
@@ -29,29 +26,40 @@ function getWeeksListElem(){ //Получение и отображение бл
         }
         weeksList.appendChild(weekElement);
     }
+    
 }
 
 
 
-function getDaysCards(){ //Получение/отображение блока с днями
+async function getDaysCards() { // Получение/отображение блока с днями
     const daysWrapper = document.querySelector('.days');
     const end = document.querySelector('.column');
-    for (let i=0;i<Object.keys(userTraining.days).length;i++){
-        daysWrapper.insertBefore((getDayCard(Object.keys(userTraining.days)[i])),end);
+    
+    const dayKeys = Object.keys(userTraining.days); // Получаем ключи дней
+    
+    for (let i = 0; i < dayKeys.length; i++) {
+        const dayCard = await getDayCard(dayKeys[i]); // Ждём карточку дня
+        daysWrapper.insertBefore(dayCard, end); // Вставляем в DOM
     }
 }
 
-function getDayCard(trainingKey){ //Получение карточки с днём
+async function getDayCard(trainingKey) {
+    // Получаем данные userTraining
+    
+    // Создаем копию шаблона и заполняем данными
     const day = dayTemplate.cloneNode(true);
     const data = userTraining.days[trainingKey];
+    day.classList.add(String(trainingKey));
     day.querySelector('h4').textContent = data.title;
     const img = day.querySelector('img');
     img.src = data.imgUrl;
     img.alt = data.title;
-    if(trainingKey=='day_1'){
-        makeCurrDay(day)
-        day.classList.add('current-day');
+    
+    // Устанавливаем текущий день для day_1
+    if (trainingKey === 'day_1') {
+        makeCurrDay(day);
     }
-    return day;
+    
+    return day; // Возвращаем day только после выполнения всех операций
 }
 
