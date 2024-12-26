@@ -3,10 +3,13 @@ let RegistrationWindow = document.querySelector('#openModal-register');
 let LogInWindow = document.querySelector('#openModal-enter');
 
 // открытие попапа входа в лк по кнопке пользователя
-openAccount.addEventListener('click',function(evt){
-    evt.preventDefault();
-    LogInWindow.classList.add('open');
-})
+if (openAccount){
+    openAccount.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        LogInWindow.classList.add('open');
+    })
+}
+
 
 //смена попапов по кнопке
 const SwitchPopUp = (currentPopup, neededPopup) => {

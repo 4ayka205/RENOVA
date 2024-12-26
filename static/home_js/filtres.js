@@ -1,44 +1,50 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Все кнопки-заголовки фильтров
-    const filterHeaders = document.querySelectorAll(".filters__header");
-    // Все группы фильтров
-    const filterGroups = document.querySelectorAll(".filters__group");
-  
-    // Функция для скрытия всех групп фильтров
-    const hideAllFilters = () => {
+  const filterHeaders = document.querySelectorAll(".filters__header");
+  const filterGroups = document.querySelectorAll(".filters__group");
+
+  const hideAllFilters = () => {
       filterGroups.forEach(group => group.classList.remove("active"));
-      // Возвращаем стрелки в исходное состояние
       filterHeaders.forEach(header => {
-        const arrow = header.querySelector('img');
-        if (arrow) arrow.style.transform = 'rotate(0deg)';
+          const arrow = header.querySelector('img');
+          if (arrow) arrow.style.transform = 'rotate(0deg)';
       });
-    };
-  
-    // Обработчик для кнопок заголовков
-    filterHeaders.forEach(header => {
-      header.addEventListener("click", () => {
-        const targetId = header.dataset.target; // Получаем ID целевого блока
-        const targetGroup = document.getElementById(targetId);
-        const arrow = header.querySelector('img'); // Стрелка
-  
-        // Если группа уже открыта, закрываем её
-        if (targetGroup.classList.contains("active")) {
-          targetGroup.classList.remove("active");
-          if (arrow) arrow.style.transform = 'rotate(0deg)'; // Возврат стрелки
-        } else {
-          // Закрываем все группы, если нажали на другой заголовок
+  };
+
+  filterHeaders.forEach(header => {
+      const targetId = header.dataset.target;
+      const targetGroup = document.getElementById(targetId);
+
+      if (!targetGroup) return;
+
+      const arrow = header.querySelector('img');
+
+      header.addEventListener("mouseover", () => {
           hideAllFilters();
-          // Показываем выбранную группу
           targetGroup.classList.add("active");
-          if (arrow) arrow.style.transform = 'rotate(180deg)'; // Поворот стрелки
-        }
+          if (arrow) arrow.style.transform = 'rotate(180deg)';
       });
-    });
-  
-    // Скрытие фильтров при клике вне области
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".filters")) {
-        hideAllFilters();
-      }
-    });
+
+      const handleMouseLeave = (event) => {
+        const related = event.relatedTarget;
+        const headersContainer = document.querySelector(".filters__headers");
+    
+        if (
+            (!headersContainer.contains(related) || related === null) &&
+            !header.contains(related) &&
+            !targetGroup.contains(related)
+        ) {
+            targetGroup.classList.remove("active"); 
+            if (arrow) arrow.style.transform = "rotate(0deg)";
+        }
+    };
+
+      header.addEventListener("mouseleave", handleMouseLeave);
+      targetGroup.addEventListener("mouseleave", handleMouseLeave);
   });
+
+  document.addEventListener("click", (e) => {
+      if (!e.target.closest(".filters")) {
+          hideAllFilters();
+      }
+  });
+});
