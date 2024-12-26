@@ -8,16 +8,12 @@ const initAlert = (option, cb) => {
     alertText.textContent = '';
 
     switch (option) {
-        case 'skeep': {
-            alertText.textContent = 'Вы уверены, что хотите пропустить тренировку? Это повлияет на расчёт комфортных весов для следующей тренировочной недели.';
-            break;
-        }
-        case 'complete': {
-            alertText.textContent = 'Вы уверены, что хотите завершить тренировку? В таком случае, мы предложим вам пройти опрос для расчёта оптимальных весов.';
+        case 'choose': {
+            alertText.textContent = 'Вы уверенны, что хотите выбрать эту тренировку? В таком случае она появится в личном кабинете, а если вы уже выбирали тренировку, то старая удалится.';
             break;
         }
         default: {
-            return; // Выходим, если опция не распознана
+            return;
         }
     }
     initAlertBtns(cb);
@@ -31,7 +27,7 @@ const initAlertBtns = (cb) => {
     noBtn.removeEventListener('click', noBtn._listener);
 
     const yesListener = () => {
-        cb();
+        // cb()
         closeAlert();
     };
 

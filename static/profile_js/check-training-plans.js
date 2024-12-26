@@ -13,7 +13,6 @@ let switches = 0;
 const switchDay = (parent) => {
     const daysWrapper = document.querySelector('.days');
     const curDay = parent.classList[1];
-    // console.log(parent.classList);
     parent.classList.remove('current-day');
     const curDayContent = parent.querySelector('.day-content');
     const newDayContent = dayTemplate.content.querySelector('.day-content').cloneNode(true);
@@ -40,7 +39,6 @@ const switchDay = (parent) => {
             break;
         }
         default:{
-            console.log('?????');
             break;
         }
     }
@@ -97,13 +95,4 @@ daysWrapper.addEventListener('click', (evt) => {
         });
     }
 });
-// const btn = document.querySelector('.skeep-btn');
-// console.log(btn);
-// btn.addEventListener('click', (evt) => {
-//     const parent = evt.closest('.day');
-//     initAlert('skeep', () => {
-//         console.log(target.classList);
-//         switchDay(parent);
-//     });
-// });
 
