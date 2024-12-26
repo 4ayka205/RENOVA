@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+
 from .models import CustomUser, UserTraining
 
 
@@ -57,3 +58,13 @@ def json_receive(request):
     objects = UserTraining.objects.all()
     data = [{'id': item.id, 'json_data': item.json_data} for item in objects]
     return JsonResponse(data, safe=False)
+
+
+def save_workout(request):
+    if request.method == 'POST':
+        current_user = request.user
+        value = request.POST.get('button_value')
+        current_user.id_workout = value
+        current_user.save()
+        return redirect('lk')
+    return render(request, 'index.html')

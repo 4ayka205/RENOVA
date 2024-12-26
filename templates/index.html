@@ -23,7 +23,7 @@
             {% if user.is_authenticated %}
             <button class="icon"><a href="/profile" id="open_profile"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
             {% else %}
-            <button class="icon"><a href="#" id="open_pop_up"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
+            <button class="icon open-modal"><a href="#" id="open_pop_up111"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
             {% endif %}
         </nav>
     </header>
@@ -195,10 +195,20 @@
                     <p>
                         6-недельная программа, разработаная для тех, кто уже знаком с тренажёрным залом, знает технику выполения основных упражнений и стремится выйти на новый уровень. Программа разбита на 3 тренировочных дня в неделю. Каждый день включает тщательно подобранные базовые и изолированные упражнения для достижения максимальных результатов в наборе мышечной массы. Тренировка предусматривает оптимальную прогрессию нагрузки.
                     </p >
-                    <button class="pick-me-btn">
+                    {% if user.is_authenticated %}
+                    <form method="POST" action="/save-workout/">
+                        {% csrf_token %}
+                        <button type="submit" name="button_value" class="pick-me-btn" value="1">
+                            <img src="{% static 'img/pick.svg' %}">
+                            <p>Выбрать</p>
+                        </button>
+                    </form>
+                    {% else %}
+                    <button class="pick-me-btn open-modal">
                         <img src="{% static 'img/pick.svg' %}">
                         <p>Выбрать</p>
                     </button>
+                    {% endif %}
                 </div>
                 <div class="card" id="second-training">
                     <div class="card-title">
@@ -209,10 +219,20 @@
                     <p>
                         6-недельная программа, разработаная для тех, кто уже знаком с тренажёрным залом, знает технику выполения основных упражнений и стремится выйти на новый уровень. Программа разбита на 3 тренировочных дня в неделю. Каждый день включает тщательно подобранные базовые и изолированные упражнения для достижения максимальных результатов в наборе мышечной массы. Тренировка предусматривает оптимальную прогрессию нагрузки.
                     </p>
-                    <button class="pick-me-btn">
-                        <img src="{% static 'img/pick.svg' %}" width="28" height="28">
+                     {% if user.is_authenticated %}
+                    <form method="POST" action="/save-workout/">
+                        {% csrf_token %}
+                        <button type="submit" name="button_value" class="pick-me-btn" value="2">
+                            <img src="{% static 'img/pick.svg' %}">
+                            <p>Выбрать</p>
+                        </button>
+                    </form>
+                    {% else %}
+                    <button class="pick-me-btn open-modal">
+                        <img src="{% static 'img/pick.svg' %}">
                         <p>Выбрать</p>
                     </button>
+                    {% endif %}
                 </div>
             </div>
         </section>

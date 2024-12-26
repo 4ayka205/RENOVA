@@ -1,15 +1,25 @@
-let openAccount = document.querySelector('#open_pop_up');
+//let openAccount = document.querySelector('#open_pop_up');
+const openAccountButtons = document.querySelectorAll('.open-modal');
 let RegistrationWindow = document.querySelector('#openModal-register');
 let LogInWindow = document.querySelector('#openModal-enter');
 
 // открытие попапа входа в лк по кнопке пользователя
-if (openAccount){
-    openAccount.addEventListener('click', (evt) => {
-        evt.preventDefault();
-        LogInWindow.classList.add('open');
-    })
-}
+//if (openAccount){
+//    openAccount.addEventListener('click', (evt) => {
+//        evt.preventDefault();
+//        LogInWindow.classList.add('open');
+//    })
+//}
 
+// открытие попапа входа в лк по кнопке
+const openModal = (evt) => {
+    evt.preventDefault();
+    LogInWindow.classList.add('open');
+};
+
+openAccountButtons.forEach(button => {
+    button.addEventListener('click', openModal);
+});
 
 //смена попапов по кнопке
 const SwitchPopUp = (currentPopup, neededPopup) => {
