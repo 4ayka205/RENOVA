@@ -678,7 +678,7 @@ a {
 }
 .alert-buttons{
     display: flex;
-    gap: 156px;
+    gap: 18px;
 }
 .alert-content p{
     padding: 0;
@@ -689,7 +689,7 @@ a {
     margin-bottom: 70px;
     text-align: center;
 }
-.no-btn, .yes-btn{
+.no-btn, .yes-btn, .ok-btn{
     width: 120px;
     height: 30px;
     border-radius: 5px;
@@ -698,7 +698,7 @@ a {
     font-weight: 600;
     border: 1px solid black;
 }
-.no-btn{
+.no-btn, .ok-btn{
     background-color: #E8FBFF;
     color:#0C1B2D;
     border-color:#0C1B2D ;
@@ -709,11 +709,11 @@ a {
     border-color: #E8FBFF;
 }
 
-.no-btn:hover, .yes-btn:hover{
+.no-btn:hover, .yes-btn:hover, .ok-btn:hover{
     cursor: pointer;
     border: 2px solid #F48273;
 }
-.no-btn:active{
+.no-btn:active, .ok-btn:active{
     background-color: #0C1B2D;
     color:#E8FBFF;
     border-color: #F48273;

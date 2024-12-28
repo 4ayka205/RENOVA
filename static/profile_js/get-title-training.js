@@ -1,5 +1,6 @@
 import {makeCurrDay} from "./util.js"
 import {userTraining} from "./api.js";
+import { deleteEmptyContent } from "./util.js";
 
 const dayTemplate = document.querySelector('#day').content.querySelector('div');
 
@@ -12,7 +13,13 @@ function getTrainingGeneral(){ //Получение и отображение т
     getDaysCards();
 }
 
-getTrainingGeneral();
+if (!userTraining){
+    deleteEmptyContent()
+}
+else{
+   getTrainingGeneral(); 
+}
+
 
 function getWeeksListElem(){ //Получение и отображение блока с кол-вом недель.
     const weeksList = document.querySelector('.weeks');

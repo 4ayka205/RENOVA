@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import CustomUser, UserTraining
 
@@ -59,12 +60,40 @@ def json_receive(request):
     data = [{'id': item.id, 'json_data': item.json_data} for item in objects]
     return JsonResponse(data, safe=False)
 
-
+@csrf_exempt
 def save_workout(request):
+    if request.method == 'GET':
+        if not request.user.is_authenticated:
+            return JsonResponse({'success': False, 'message': 'Пользователь не авторизован'}, status=401)
+
+        current_user = request.user
+        workout_id = getattr(current_user, 'id_workout', None)  # Получаем id тренировки, если она есть
+        if workout_id is not None:
+            return JsonResponse({'success': True, 'workout_id': workout_id})
+        else:
+            return JsonResponse({'success': False, 'message': 'Тренировка не выбрана'})
+
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return JsonResponse({'success': False, 'message': 'Пользователь не авторизован'}, status=401)
+
         current_user = request.user
         value = request.POST.get('button_value')
+
         current_user.id_workout = value
         current_user.save()
-        return redirect('lk')
-    return render(request, 'index.html')
+        return JsonResponse({'success': True, 'message': 'Тренировка сохранена'})
+
+    if request.method == 'DELETE':
+        if not request.user.is_authenticated:
+            return JsonResponse({'success': False, 'message': 'Пользователь не авторизован'}, status=401)
+
+        current_user = request.user
+        try:
+            current_user.id_workout = None  # Сбрасываем id тренировки
+            current_user.save()
+            return JsonResponse({'success': True, 'message': 'Тренировка сброшена'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+    return JsonResponse({'success': False, 'message': 'Метод не поддерживается'}, status=405)

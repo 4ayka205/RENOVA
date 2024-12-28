@@ -533,3 +533,19 @@ body {
   color:#0C1B2D;
   border-color: #F48273;
 }
+
+/* Когда нет тренировки: */
+
+.empty-box{
+  margin: 50px auto;
+  width: 1270px;
+  background-color: #163152;
+  text-align: center;
+}
+.empty-text{
+  display: inline-block;
+  margin: 264px 365px;
+  width: 540px;
+  font-size: 24px;
+  font-weight: 600;
+}

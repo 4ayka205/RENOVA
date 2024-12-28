@@ -38,4 +38,20 @@ const switchWeek = () => {
         }
     }
 };
-export {makeCurrDay, switchWeek};
+
+const mainContent = document.querySelector('main');
+const footer = document.querySelector('footer');
+let emptyBox; // Переменная для хранения элемента
+let emptyText;
+const deleteEmptyContent = () => {
+    emptyText = document.createElement('p');
+    emptyText.textContent = 'Тренеровка отсутствует, пройдите опрос или выберете одну из предложенных тренировок сами';
+    emptyText.classList.add('empty-text');
+    mainContent.classList.add('hidden');
+    emptyBox = document.createElement('div');
+    emptyBox.appendChild(emptyText)
+    emptyBox.classList.add('empty-box');
+    footer.parentNode.insertBefore(emptyBox, footer);
+
+};
+export {makeCurrDay, switchWeek, deleteEmptyContent};
