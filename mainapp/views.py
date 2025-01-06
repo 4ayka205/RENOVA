@@ -1,9 +1,6 @@
-import json
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.views.decorators.csrf import csrf_exempt
-
 from .models import CustomUser, UserTraining
 
 
@@ -60,7 +57,7 @@ def json_receive(request):
     data = [{'id': item.id, 'json_data': item.json_data} for item in objects]
     return JsonResponse(data, safe=False)
 
-@csrf_exempt
+
 def save_workout(request):
     if request.method == 'GET':
         if not request.user.is_authenticated:

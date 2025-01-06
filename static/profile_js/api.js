@@ -67,13 +67,18 @@ const getUserTrainingData = async () => {
 // Пример вызова:
 const userTraining = await getUserTrainingData();
 
+function getCSRFToken() {
+    const cookieValue = document.cookie.split('; ').find(row => row.startsWith('csrftoken='));
+    return cookieValue ? cookieValue.split('=')[1] : null;
+}
+
 const deleteWorkout = async () => {
   try {
       const response = await fetch('/save-workout/', {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json',
-              // 'X-CSRFToken': getCSRFToken() // Убедитесь, что передаете токен CSRF
+              'X-CSRFToken': getCSRFToken() // Убедитесь, что передаете токен CSRF
           },
       });
 

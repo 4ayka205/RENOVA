@@ -3,17 +3,22 @@ import { initAlert } from "./alert.js";
 const alert = document.querySelector('#alert');
 const pickMeBtns = document.querySelectorAll('.pick-me-btn');
 
+function getCSRFToken() {
+    const cookieValue = document.cookie.split('; ').find(row => row.startsWith('csrftoken='));
+    return cookieValue ? cookieValue.split('=')[1] : null;
+}
 
-const postTrainingNumber = async (evt) => {
-
-    const buttonValue = evt.target.value; // Значение кнопки
+const postTrainingNumber = async (buttonValue) => {
 
     const formData = new FormData();
     formData.append('button_value', buttonValue); // Значение кнопки
     try {
         const response = await fetch('/save-workout/', {
             method: 'POST',
-            body: formData // Отправляем FormData
+            body: formData, // Отправляем FormData
+            headers: {
+            'X-CSRFToken': getCSRFToken()
+        }
         });
 
         if (response.redirected) {
@@ -29,9 +34,10 @@ const postTrainingNumber = async (evt) => {
     }
 };
 
-pickMeBtns.forEach((pickMeBtn) =>{
-    pickMeBtn.addEventListener('click',  (evt) => {
+pickMeBtns.forEach((pickMeBtn) => {
+    pickMeBtn.addEventListener('click', (evt) => {
         evt.preventDefault();
-        initAlert('choose', () => postTrainingNumber(evt));
-    })
+        const buttonValue = evt.currentTarget.value;
+        initAlert('choose', () => postTrainingNumber(buttonValue));
+    });
 });

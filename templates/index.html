@@ -1,29 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>FitFlex</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="main-header">
         <nav class="main-nav">
-            <span class="logo"><a href="#"><img src="{% static 'img/logo.svg' %}" alt="логотип FitFlex" width="105" height="100"></a></span>
+            <span class="logo"><a href="#"><img src="{% static 'img/logo.svg' %}" alt="логотип FitFlex" width="105"
+                        height="100"></a></span>
             <ul class="main-nav-list">
                 <li class="main-nav-item"><a href="#">Программы тренировок</a></li>
                 <li class="main-nav-item"><a href="#">Полезные статьи</a></li>
                 <li class="main-nav-item"><a href="#">О нас</a></li>
                 <li class="main-nav-item"><a href="#">Контакты</a></li>
             </ul>
-            <button class="button-nav" type="button"><p>Пройти опрос</p><img src="{% static 'img/Vector_2.svg' %}" class="vector_2" height="28" width="28"></button>
+            <button class="button-nav" type="button">
+                <p>Пройти опрос</p><img src="{% static 'img/Vector_2.svg' %}" class="vector_2" height="28" width="28">
+            </button>
             {% if user.is_authenticated %}
-            <button class="icon"><a href="/profile" id="open_profile"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
+            <button class="icon"><a href="/profile" id="open_profile"><img src="{% static 'img/avatar.svg' %}"
+                        alt="Иконка пользователя" width="44" height="44"></a></button>
             {% else %}
-            <button class="icon open-modal"><a href="#" id="open_pop_up111"><img src="{% static 'img/avatar.svg' %}" alt="Иконка пользователя" width="44" height="44"></a></button>
+            <button class="icon open-modal"><a href="#" id="open_pop_up111"><img src="{% static 'img/avatar.svg' %}"
+                        alt="Иконка пользователя" width="44" height="44"></a></button>
             {% endif %}
         </nav>
     </header>
@@ -32,7 +41,10 @@
             <div class="container">
                 <h1>FitFlex</h1>
                 <h2>Портал в мир Фитнесса и Здоровья</h2>
-                <p>Добро пожаловать на FitFlex — портал в мир Фитнесса. Независимо от вашего уровня подготовки, мы поможем подобрать программу, которая идеально соответствует вашим потребностям и возможностям. Наш Сайт предлагает адаптированные тренировки для всех — от новичков до опытных спортсменов, а также для тех, кто восстанавливается после травм или стремится поддерживать форму и здоровье.</p>
+                <p>Добро пожаловать на FitFlex — портал в мир Фитнесса. Независимо от вашего уровня подготовки, мы
+                    поможем подобрать программу, которая идеально соответствует вашим потребностям и возможностям. Наш
+                    Сайт предлагает адаптированные тренировки для всех — от новичков до опытных спортсменов, а также для
+                    тех, кто восстанавливается после травм или стремится поддерживать форму и здоровье.</p>
                 <div class="pagination">
                     <span class="dot active"></span>
                     <span class="dot"></span>
@@ -57,11 +69,13 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
+                                <input type="email" name="email" class="form-control" placeholder="Введите свой email"
+                                    required />
                             </div>
                             <div class="form-group">
                                 <label>Пароль</label>
-                                <input type="password" name="password" class="form-control" placeholder="**********" required>
+                                <input type="password" name="password" class="form-control" placeholder="**********"
+                                    required>
                                 {% if error and error_type == 'login' %}
                                 <div class="error-text">{{ error }}</div>
                                 {% endif %}
@@ -70,13 +84,14 @@
                             <div class="form-group">
                                 <div class="btn-group-enter">
                                     <div class="remember-me">
-                                    <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1"/>
-                                    <label for="styled-checkbox-1">Запомнить меня</label>
-                                </div>
+                                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox"
+                                            value="value1" />
+                                        <label for="styled-checkbox-1">Запомнить меня</label>
+                                    </div>
                                     <button type="submit" class="btn btn-model">
                                         Войти
                                     </button>
-                                    <button type="button" class="btn btn-google" >
+                                    <button type="button" class="btn btn-google">
                                         Войти с помощью Google
                                     </button>
                                 </div>
@@ -84,10 +99,10 @@
                             </div>
                         </form>
                     </div>
-              </div>
+                </div>
             </div>
         </div>
-        
+
         <div id="openModal-register" class="modal">
             <div class="modal-dialog-register">
                 <div class="modal-content">
@@ -101,15 +116,18 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Введите свой email" required />
+                                <input type="email" name="email" class="form-control" placeholder="Введите свой email"
+                                    required />
                             </div>
                             <div class="form-group">
                                 <label>Пароль</label>
-                                <input type="password" name="password" class="form-control" placeholder="**********" required>
+                                <input type="password" name="password" class="form-control" placeholder="**********"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label>Повторите пароль</label>
-                                <input type="password" name="password_confirm" class="form-control" placeholder="**********" required>
+                                <input type="password" name="password_confirm" class="form-control"
+                                    placeholder="**********" required>
                                 {% if error and error_type == 'register' %}
                                 <div class="error-text">{{ error }}</div>
                                 {% endif %}
@@ -119,7 +137,7 @@
                                     <button type="submit" class="btn btn-model" id="btn_swap_popUp">
                                         Зарегистрироваться
                                     </button>
-                                    <button type="button" class="btn btn-google" >
+                                    <button type="button" class="btn btn-google">
                                         Войти с помощью Google
                                     </button>
                                 </div>
@@ -134,10 +152,12 @@
             <div class="survey-content">
                 <div class="survey-content-header">
                     <h3>Пройди котороткий опрос, и мы подберём для тебя
-                    подходящую тренировку!</h3>
+                        подходящую тренировку!</h3>
                     <img src="{% static 'img/survey.svg' %}" width="62" height="83">
                 </div>
-                <button id ="start-survey"><img src="{% static 'img/pencil.svg' %}" width="35" height="35"><p>Пройти опрос</p></button>
+                <button id="start-survey"><img src="{% static 'img/pencil.svg' %}" width="35" height="35">
+                    <p>Пройти опрос</p>
+                </button>
             </div>
         </section>
         <section class="trainings">
@@ -146,35 +166,65 @@
                 <!-- Общий блок с заголовками фильтров -->
                 <div class="filters__headers">
                     <img class="filters-img" src="{% static 'img/filter.svg' %}" width="25" height="25">
-                    <a class="filters__header f1" data-target="level"><p>Уровень подготовки</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f2" data-target="goal" id="2"><p>Цель</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f3" data-target="place"><p>Место</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f4" data-target="gender"><p>Пол</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
-                    <a class="filters__header f5" data-target="special"><p>Специальное</p><img src ="{% static 'img/arrow.svg' %}" width="18" height="11"></a>
+                    <a class="filters__header f1" data-target="level">
+                        <p>Уровень подготовки</p><img src="{% static 'img/arrow.svg' %}" width="18" height="11">
+                    </a>
+                    <a class="filters__header f2" data-target="goal" id="2">
+                        <p>Цель</p><img src="{% static 'img/arrow.svg' %}" width="18" height="11">
+                    </a>
+                    <a class="filters__header f3" data-target="place">
+                        <p>Место</p><img src="{% static 'img/arrow.svg' %}" width="18" height="11">
+                    </a>
+                    <a class="filters__header f4" data-target="gender">
+                        <p>Пол</p><img src="{% static 'img/arrow.svg' %}" width="18" height="11">
+                    </a>
+                    <a class="filters__header f5" data-target="special">
+                        <p>Специальное</p><img src="{% static 'img/arrow.svg' %}" width="18" height="11">
+                    </a>
                 </div>
 
                 <!-- Блоки с фильтрами, скрытые по умолчанию -->
                 <div class="filters__content">
                     <div class="filters__group" id="level">
-                        <label><input type="checkbox" name="level" value="novice"> <p>Новичок</p></label>
-                        <label><input type="checkbox" name="level" value="advanced"> <p>Продвинутый</p></label>
-                        <label><input type="checkbox" name="level" value="master"> <p>Мастер в своём деле</p></label>
+                        <label><input type="checkbox" name="level" value="novice">
+                            <p>Новичок</p>
+                        </label>
+                        <label><input type="checkbox" name="level" value="advanced">
+                            <p>Продвинутый</p>
+                        </label>
+                        <label><input type="checkbox" name="level" value="master">
+                            <p>Мастер в своём деле</p>
+                        </label>
                     </div>
 
                     <div class="filters__group" id="goal">
-                        <label><input type="checkbox" name="goal" value="slim"> <p>Похудение</p></label>
-                        <label><input type="checkbox" name="goal" value="mass"> <p>Набор массы</p></label>
-                        <label><input type="checkbox" name="goal" value="maintain"> <p>Поддержание формы</p></label>
+                        <label><input type="checkbox" name="goal" value="slim">
+                            <p>Похудение</p>
+                        </label>
+                        <label><input type="checkbox" name="goal" value="mass">
+                            <p>Набор массы</p>
+                        </label>
+                        <label><input type="checkbox" name="goal" value="maintain">
+                            <p>Поддержание формы</p>
+                        </label>
                     </div>
 
                     <div class="filters__group" id="place">
-                        <label><input type="checkbox" name="place" value="gym"> <p>Зал</p></label>
-                        <label><input type="checkbox" name="place" value="home"> <p>Дом</p></label>
+                        <label><input type="checkbox" name="place" value="gym">
+                            <p>Зал</p>
+                        </label>
+                        <label><input type="checkbox" name="place" value="home">
+                            <p>Дом</p>
+                        </label>
                     </div>
 
                     <div class="filters__group" id="gender">
-                        <label><input type="checkbox" name="gender" value="male"> <p>Муж.</p></label>
-                        <label><input type="checkbox" name="gender" value="female"> <p>Жен.</p></label>
+                        <label><input type="checkbox" name="gender" value="male">
+                            <p>Муж.</p>
+                        </label>
+                        <label><input type="checkbox" name="gender" value="female">
+                            <p>Жен.</p>
+                        </label>
                     </div>
 
                     <div class="filters__group" id="special">
@@ -193,8 +243,12 @@
                     </div>
                     <img class="card-img" src="{% static 'img/card_1.png' %}" width="430" height="250">
                     <p>
-                        6-недельная программа, разработаная для тех, кто уже знаком с тренажёрным залом, знает технику выполения основных упражнений и стремится выйти на новый уровень. Программа разбита на 3 тренировочных дня в неделю. Каждый день включает тщательно подобранные базовые и изолированные упражнения для достижения максимальных результатов в наборе мышечной массы. Тренировка предусматривает оптимальную прогрессию нагрузки.
-                    </p >
+                        6-недельная программа, разработаная для тех, кто уже знаком с тренажёрным залом, знает технику
+                        выполения основных упражнений и стремится выйти на новый уровень. Программа разбита на 3
+                        тренировочных дня в неделю. Каждый день включает тщательно подобранные базовые и изолированные
+                        упражнения для достижения максимальных результатов в наборе мышечной массы. Тренировка
+                        предусматривает оптимальную прогрессию нагрузки.
+                    </p>
                     {% if user.is_authenticated %}
                     <form method="POST" action="/save-workout/">
                         {% csrf_token %}
@@ -204,7 +258,7 @@
                         </button>
                     </form>
                     {% else %}
-                        <div class="un-choose">*Ввойдите в аккаунт, чтобы выбрать</div>
+                    <div class="un-choose">*Ввойдите в аккаунт, чтобы выбрать</div>
                     {% endif %}
                 </div>
                 <div class="card" id="second-training">
@@ -214,9 +268,13 @@
                     </div>
                     <img class="card-img" src="{% static 'img/card_1.png' %}" width="430" height="250">
                     <p>
-                        6-недельная программа, разработаная для тех, кто уже знаком с тренажёрным залом, знает технику выполения основных упражнений и стремится выйти на новый уровень. Программа разбита на 3 тренировочных дня в неделю. Каждый день включает тщательно подобранные базовые и изолированные упражнения для достижения максимальных результатов в наборе мышечной массы. Тренировка предусматривает оптимальную прогрессию нагрузки.
+                        6-недельная программа, разработаная для тех, кто уже знаком с тренажёрным залом, знает технику
+                        выполения основных упражнений и стремится выйти на новый уровень. Программа разбита на 3
+                        тренировочных дня в неделю. Каждый день включает тщательно подобранные базовые и изолированные
+                        упражнения для достижения максимальных результатов в наборе мышечной массы. Тренировка
+                        предусматривает оптимальную прогрессию нагрузки.
                     </p>
-                     {% if user.is_authenticated %}
+                    {% if user.is_authenticated %}
                     <form method="POST" action="/save-workout/">
                         {% csrf_token %}
                         <button type="submit" name="button_value" class="pick-me-btn" value="2">
@@ -225,13 +283,13 @@
                         </button>
                     </form>
                     {% else %}
-                        <div class="un-choose">*Ввойдите в аккаунт, чтобы выбрать</div>
+                    <div class="un-choose">*Ввойдите в аккаунт, чтобы выбрать</div>
                     {% endif %}
                 </div>
             </div>
         </section>
         <div id="alert" class="hidden">
-            <div class = 'alert-content'>
+            <div class='alert-content'>
                 <p>Вы уверенны, что хотите пропустить тренировку?
                     Это повлияет на расчёт комфортных весов для следующей
                     тренировочной недели
@@ -246,4 +304,5 @@
     </main>
     <script src="{% static 'home_js/main.js' %}" type="module"></script>
 </body>
+
 </html>

@@ -1,74 +1,79 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <title>Личный кабинет</title>
     <link href="{% static 'css/profile.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="lk-header" id="top">
         <div class="user-info">
-          <img src="{% static 'img/user.svg' %}" class="icon-user" width="35" height="35.81">
-          <h1>{{ user.email }}!</h1>
+            <img src="{% static 'img/user.svg' %}" class="icon-user" width="35" height="35.81">
+            <h1>{{ user.email }}!</h1>
         </div>
         <div class="user-link">
             <a href="{% url 'home' %}" class="back-link">Вернуться</a>
             <a href="{% url 'logout' %}" class="back-link">Выйти</a>
         </div>
     </header>
-  
+
     <main class="main-container">
-      <section class="program">
-        <div class="program-title">
-            <img src="{% static 'img/fire.svg' %}" width="25" height="30.66">
-            <h2>Тренировка - <span id="name"></span></h2>
-        </div>
-        <div class="program-description">
-            <div class="p">Общее: <span id="description"></span></div>
-            <div class="weeks-wrapper">
-                <p>Недели:</p>
-                <ul class="weeks">
-                </ul>   
+        <section class="program">
+            <div class="program-title">
+                <img src="{% static 'img/fire.svg' %}" width="25" height="30.66">
+                <h2>Тренировка - <span id="name"></span></h2>
             </div>
-        </div>
-        <div class="current-training">
-            <div class="training-title">
-                <img src="{% static 'img/kalendar.svg' %}" width="20" height="22">
-                <h3>1 неделя:</h3>
-            </div>
-            <div class="training-content">
-               <div class="days">
-                <div class="column">
-                    <p class="note"><span>Примечание:</span> Вы можете выбрать любые дни недели, главное чтобы перерыв м/у тренировками составлял 1-2 дня.</p>
-                    <button class="delete-program">Удалить программу</button>
+            <div class="program-description">
+                <div class="p">Общее: <span id="description"></span></div>
+                <div class="weeks-wrapper">
+                    <p>Недели:</p>
+                    <ul class="weeks">
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div id="alert" class="hidden">
-            <div class = 'alert-content'>
-                <p>Вы уверенны, что хотите пропустить тренировку?
-                    Это повлияет на расчёт комфортных весов для следующей
-                    тренировочной недели
-                </p>
-                <div class="alert-buttons">
-                    <button class="no-btn">Нет</button>
-                    <button class="yes-btn">Да</button>
+            <div class="current-training">
+                <div class="training-title">
+                    <img src="{% static 'img/kalendar.svg' %}" width="20" height="22">
+                    <h3>1 неделя:</h3>
                 </div>
-            </div>
-        </div>
-      </section>
+                <div class="training-content">
+                    <div class="days">
+                        <div class="column">
+                            <p class="note"><span>Примечание:</span> Вы можете выбрать любые дни недели, главное чтобы
+                                перерыв м/у тренировками составлял 1-2 дня.</p>
+                            <button class="delete-program">Удалить программу</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="alert" class="hidden">
+                    <div class='alert-content'>
+                        <p>Вы уверенны, что хотите пропустить тренировку?
+                            Это повлияет на расчёт комфортных весов для следующей
+                            тренировочной недели
+                        </p>
+                        <div class="alert-buttons">
+                            <button class="no-btn">Нет</button>
+                            <button class="yes-btn">Да</button>
+                        </div>
+                    </div>
+                </div>
+        </section>
         <section class="program-plan">
             <h2 class="program-article">Грудь<h2>
-            <p class="program-article-p">План тренировки</p>
-            <div class="exercises">
-                <div class="exercise warm-up">
-                    <h3>Разминка(10-15 минут):</h3>
-                    <ol class="warm-list">
-                        <!-- <li class="warm-element">Кардио: 5 минут на беговой дорожке или велотренажере (легкий темп), чтобы разогреть мышцы.</li>
+                    <p class="program-article-p">План тренировки</p>
+                    <div class="exercises">
+                        <div class="exercise warm-up">
+                            <h3>Разминка(10-15 минут):</h3>
+                            <ol class="warm-list">
+                                <!-- <li class="warm-element">Кардио: 5 минут на беговой дорожке или велотренажере (легкий темп), чтобы разогреть мышцы.</li>
                         <li class="warm-element">Разминка суставов: круговые движения плечами, локтями, запястьями и шеей (1-2 минуты).</li>
                         <li class="warm-element">Подготовительные подходы:
                             <ul class="warm-element-list">
@@ -76,9 +81,9 @@
                                 <li>Разведения рук с гантелями – 1 подход по 12 повторений с легким весом.</li>
                             </ul>
                         </li> -->
-                    </ol>
-                </div>
-                <!-- <div class="exercise">
+                            </ol>
+                        </div>
+                        <!-- <div class="exercise">
                     <div class="exercise-content">
                         <p>1. Жим штанги на горизонтальной скамье</p>
                         <ul class="exercise-list">
@@ -106,10 +111,10 @@
                     </div>
                     <img src="{% static 'img/firstTraining/exc_2.png' %}" width="328" height="172">
                 </div> -->
-                <div class="exercise warm-down">
-                    <h3>Заминка(При желании):</h3>
-                    <ol class="warm-list">
-                        <!-- <li class="warm-element">Скручивания на коврике или тренажёре
+                        <div class="exercise warm-down">
+                            <h3>Заминка(При желании):</h3>
+                            <ol class="warm-list">
+                                <!-- <li class="warm-element">Скручивания на коврике или тренажёре
                             <ul class="warm-element-list">
                                 <li>Подходы: 2</li>
                                 <li>Повторения: 10–20</li>
@@ -117,13 +122,13 @@
                         </li>
                         <li>Кардио: 10-15 минут на дорожке или<br>
                             велотренажере (комфортный темп)</li> -->
-                    </ol>
-                </div>
-            </div>
-            <div class="edit">
-                <button class="get-in-telegramm">Получить план через telegram-bot</button>
-                <a href="#top" class="top"><img src="{% static 'img/doubleArrow.svg' %}"></a>
-            </div>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="edit">
+                        <button class="get-in-telegramm">Получить план через telegram-bot</button>
+                        <a href="#top" class="top"><img src="{% static 'img/doubleArrow.svg' %}"></a>
+                    </div>
         </section>
         <script src="{% static 'profile_js/main.js' %}" type="module"></script>
     </main>
@@ -143,7 +148,7 @@
             </div>
             <img src="{% static 'img/firstTraining/exc_1.png' %}" width="328" height="172">
         </div>
-      </template>
+    </template>
     <template id="day">
         <div class="day">
             <h4>Спина</h4>
@@ -158,11 +163,13 @@
     <template id="day-content_">
         <div class="day-content">
             <div class='buttons-wrapper'>
-                <button class="skeep-btn">Пропустить <img src="{% static 'img/krest.svg' %}" width="10" height="10"></button>
+                <button class="skeep-btn">Пропустить <img src="{% static 'img/krest.svg' %}" width="10"
+                        height="10"></button>
                 <button class="get-btn">Получить <img src="{% static 'img/tg.svg' %}" width="10" height="10"></button>
             </div>
             <button class="complete-btn">Завершить</button>
         </div>
     </template>
 </body>
+
 </html>
