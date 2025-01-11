@@ -17,7 +17,7 @@
     <header class="lk-header" id="top">
         <div class="user-info">
             <img src="{% static 'img/user.svg' %}" class="icon-user" width="35" height="35.81">
-            <h1>{{ user.email }}!</h1>
+            <h1>Привет, {{ user.email }}!</h1>
         </div>
         <div class="user-link">
             <a href="{% url 'home' %}" class="back-link">Вернуться</a>
