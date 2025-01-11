@@ -594,15 +594,18 @@ a {
 /* Карточки с тренировками */
 .cards{
     display: flex;
-    gap: 110px;
+    column-gap: 110px;
+    row-gap: 75px;
     align-items: center;
     padding: 0 128px;
     margin-top: 38px;
+    flex-wrap: wrap;
+    width: 1366px;
 }
 .card{
     background-color: #163152;
     border-radius: 0 30px;
-    width: 500px;
+    width: 430px;
     padding: 32px 35px 70px 35px;
     border: 5px solid black;
 }
@@ -628,6 +631,7 @@ a {
     padding: 0;
     margin-top: 30px;
     margin-bottom: 40px;
+    height: 180px;
 }
 .pick-me-btn{
     cursor: pointer;
@@ -647,6 +651,7 @@ a {
     color: white;
     font-weight: 600;
     font-size: 20px;
+    height: auto;
 }
 
 .hidden{
